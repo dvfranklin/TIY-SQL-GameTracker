@@ -1,0 +1,35 @@
+<html>
+<body>
+
+<h1>Add Game Form</h1>
+
+{{#error}}
+    <div style="color: red">{{error}}</div>
+{{/error}}
+
+<form action="/create-game" method="post">
+
+    <div>
+        <input type="text" name="name" placeholder="Game name" value="name">
+    </div>
+
+    <div>
+        <input type="text" name="genre" placeholder="Game genre" value="genre">
+    </div>
+
+    <div>
+        <input type="text" name="platform" placeholder="Platform" value="platform">
+    </div>
+
+    <div>
+        <input type="text" name="releaseYear" placeholder="Release year" value="releaseYear">
+    </div>
+
+    <button type="submit">Add Game</button>
+
+</form>
+
+
+
+</body>
+</html>

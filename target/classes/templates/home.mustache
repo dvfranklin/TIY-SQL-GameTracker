@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<h1>Game Tracker</h1>
+
+<p><a href="/create-game">Create Game</a></p>
+
+<ul>
+    {{#games}}
+        <li>{{name}}, Genre: {{genre}}, Platform: {{platform}}, Released in {{releaseYear}}</li>
+        <form action="/edit-game" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit">Edit</button>
+        </form>
+        <form action="/delete-game" method="post">
+            <input type="hidden" name="id" value="{{id}}"/>
+            <button type="submit">Delete</button>
+        </form>
+    {{/games}}
+</ul>
+
+</body>
+</html>
