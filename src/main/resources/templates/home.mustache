@@ -8,11 +8,11 @@
 <ul>
     {{#games}}
         <li>{{name}}, Genre: {{genre}}, Platform: {{platform}}, Released in {{releaseYear}}</li>
-        <form action="/edit-game" method="get">
+        <form style="display: inline;" action="/edit-game" method="get">
             <input type="hidden" name="id" value="{{id}}">
             <button type="submit">Edit</button>
         </form>
-        <form action="/delete-game" method="post">
+        <form style="display: inline;" action="/delete-game" method="post">
             <input type="hidden" name="id" value="{{id}}"/>
             <button type="submit">Delete</button>
         </form>

@@ -21,35 +21,27 @@ public class Main {
         service.initializeDatabase(connection);
 
 
-        // fill in the spark route definition
-        // set the route to "/"
-        // add the lambda
-
+        // GET webroot
         Spark.get(
                 "/",
                 (request, response) -> {
 
-                    // create a hashmap for the model
+                    // Hashmap as model
                     HashMap m = new HashMap();
 
 
-                    // use your selectGames method to select all of the games from the database
+                    // populate ArrayList of games, add it to model
                     ArrayList<Game> games = service.selectGames(connection);
-
-
-                    // put the games arraylist into the model
                     m.put("games", games);
 
-                    // show the home page template
+                    // show homepage
                     return new ModelAndView(m, "home.mustache");
                 },
                 new MustacheTemplateEngine()
         );
 
 
-        // create a "get" spark route for the create-game endpoint
-        // set the endpoint
-        // add your lambda
+        // GET to redirect to create-game form
         Spark.get(
                 "/create-game",
                 (request, response) -> {
@@ -61,15 +53,12 @@ public class Main {
         );
 
 
-        // create a post route for create-game
-        // set the endpoint path
-        // add your lambda
+        // POST to create game from user input
         Spark.post(
                 "/create-game",
                 (request, response) -> {
 
-                    // use a try/catch block when creating the game. This is used to catch validation
-                    // errors on the game year.
+
                     try {
                         // create game and add to user's collection
                         String name = request.queryParams("name");
@@ -107,19 +96,16 @@ public class Main {
 
 
 
-        // create a get route for the edit-game page
-
-        // set the endpoint route
-
-        // add your lambda
+        // GET route to bring up edit-game form
         Spark.get(
                 "/edit-game",
                 (request, response) -> {
 
                     HashMap m = new HashMap();
+
+                    // find the game user wanted to edit, pass it to the model
                     int editId = Integer.valueOf(request.queryParams("id"));
                     Game game = service.readGame(connection, editId);
-
                     m.put("game", game);
 
 
@@ -130,7 +116,7 @@ public class Main {
 
 
 
-        // create a spark post endpoint for edit-game
+        // POST route to edit game based on user input
         Spark.post(
                 "/edit-game",
                 (request, response) -> {
@@ -166,11 +152,13 @@ public class Main {
         );
 
 
+        // POST route to delete a game
         Spark.post(
                 "/delete-game",
                 (request, response) -> {
-                    int deleteId = Integer.valueOf(request.queryParams("id"));
 
+                    // find the game user wanted to delete, pass it to the model
+                    int deleteId = Integer.valueOf(request.queryParams("id"));
                     service.deleteGame(connection, deleteId);
 
                     response.redirect("/");

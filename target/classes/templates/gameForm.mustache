@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<h1>Add Game Form</h1>
+<h1>Add A New Game</h1>
 
 {{#error}}
     <div style="color: red">{{error}}</div>
@@ -10,19 +10,19 @@
 <form action="/create-game" method="post">
 
     <div>
-        <input type="text" name="name" placeholder="Game name" value="name">
+        <input type="text" name="name" placeholder="Game name">
     </div>
 
     <div>
-        <input type="text" name="genre" placeholder="Game genre" value="genre">
+        <input type="text" name="genre" placeholder="Game genre">
     </div>
 
     <div>
-        <input type="text" name="platform" placeholder="Platform" value="platform">
+        <input type="text" name="platform" placeholder="Platform">
     </div>
 
     <div>
-        <input type="text" name="releaseYear" placeholder="Release year" value="releaseYear">
+        <input type="text" name="releaseYear" placeholder="Release year">
     </div>
 
     <button type="submit">Add Game</button>

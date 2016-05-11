@@ -8,19 +8,16 @@
 There was an error with your release year.
 {{/error}}
 
+<form action="/edit-game" method="post">
 {{#game}}
-    Title: {{name}}<br>
-    Genre: {{genre}}<br>
-    Platform: {{platform}}<br>
-    Release Year: {{releaseYear}}<br>
+    Title: {{name}}<input type="text" name="name" value="{{name}}"><br>
+    Genre: {{genre}}<input type="text" name="genre" value="{{genre}}"/><br>
+    Platform: {{platform}}<input type="text" name="platform" value="{{platform}}"/><br>
+    Release Year: {{releaseYear}}<input type="text" name="releaseYear" value="{{releaseYear}}"/><br>
 {{/game}}
 
 <br>
-<form action="/edit-game" method="post">
-    <input type="text" placeholder="Enter new game name" name="name"/>
-    <input type="text" placeholder="Enter new genre" name="genre"/>
-    <input type="text" placeholder="Enter new platform" name="platform"/>
-    <input type="text" placeholder="Enter new release year" name="releaseYear"/>
+
     <input type="hidden" name="id" value="{{game.id}}">
     <button type="submit">Submit</button>
 </form>
